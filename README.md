@@ -19,12 +19,17 @@ purging your database tables of the data that have come from your users.
 
 ## Phase 0: Getting Started
 
-Feel free to clone down this repository, `cd` into the `backend` directory, run
-`npm install` to get the dependencies installed, creating a `.env` file
-based off the `.env.example` file, creating a user in `psql` based off your
-`.env` file, running `npx dotenv sequelize db:create`, `npx dotenv sequelize
-db:migrate`, `npx dotenv sequelize db:seed:all`, then finally running `npm
-start` to start the application to follow along.
+Feel free to
+
+1. Clone down this repository
+2. `cd` into the `backend` directory
+2. Run `npm install` to get the dependencies installed
+4. Create a `.env` file based off the `.env.example` file
+5. Create a user in `psql` based off your `.env` file
+6. Run `npx dotenv sequelize db:create`
+7. Run `npx dotenv sequelize db:migrate`
+8. Run `npx dotenv sequelize db:seed:all`
+9. Run `npm start` to start the application to follow along.
 
 ### Overview of the application
 
