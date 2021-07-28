@@ -41,11 +41,63 @@ You can generate a new migration file with the following command, replacing the
 npx sequelize migration:generate --name «name of migration»
 ```
 
-For this example
+For this example, the first migration we'll make is to add a column to the
+`Users` table, so run this command to generate that migration.
 
 ```sh
 npx sequelize migration:generate --name update-user-table
 ```
+
+In the new migration file, which should have a name that starts with the
+timestamp and ends with `-update-user-table.js`, we will set up the `up` method
+to use the `addColumn` method to add a `firstName` column to our `Users` table
+and the `down` method to use the `removeColumn` method to remove the
+`firstName` column from our `Users` table.
+
+The contents of the migration file should now look something like this.
+
+```js
+// backend/db/migrations/«timestamp»-update-user-table.js
+'use strict';
+
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.addColumn('Users', 'firstName', {
+      type: Sequelize.STRING,
+      allowNull: false,
+      defaultValue: '',
+    });
+  },
+
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.removeColumn('Users', 'firstName', {});
+  },
+};
+```
+
+Notice how we can set the column's attributes in the third parameter in the
+`addColumn` method. When adding a new column to a table with pre-existing data
+that has the non-nullable attribute, add a `defaultValue` attribute as well so
+that the migration doesn't error out because of rows in your database that won't
+have data for that new column.
+
+You can test this out by removing the `defaultValue` attribute and running this
+migration with `npx dotenv sequelize db:migrate` to see the error message. Since
+it would have failed to migrate since there was pre-existing data in our `Users`
+table from the seeder file, we can make the necessary modification to the this
+migration by adding the `defaultValue` attribute back, and re-running this
+migration.
+
+Check out the [Sequelize documentation] for more information on using migrations.
+
+## Phase 2: Using one migration to do multiple things
+
+In the previous phase, we set up a migration to do one thing, add one column to
+one of our database tables. As you build out an application and the
+corresponding database, you might need to add multiple columns or do multiple
+things to your database, and making a single migration for each change might not
+be the most ideal. In this next section, we'll go through making one migration
+add two columns to our `Users` table.
 
 ```sh
 npx sequelize migration:generate --name more-user-table-updates
@@ -56,3 +108,5 @@ npx sequelize migration:generate --name more-user-table-updates
 * Note on updating other seeders that rely on the demo user seeds to query for
     those users instead of just assuming the IDs
 * Adding multiple columns at the same time in one migration
+
+[Sequelize documentation]: https://sequelize.org/master/manual/migrations.html#migration-skeleton
