@@ -97,9 +97,9 @@ Check out the [Sequelize documentation] for more information on using migrations
 In the previous phase, you set up a migration to do one thing, add one column to
 one of our database tables. As you build out an application and the
 corresponding database, you might need to add multiple columns or do multiple
-things to your database, and making a single migration for each change might not
-be the most ideal. In this next section, you'll go through making one migration
-add two columns to our `Users` table.
+things to your database. Making a single migration for each change might not be
+ideal. In this next section, you'll go through making one migration add two
+columns to our `Users` table.
 
 Just like the previous phase, you will generate a migration with the following
 command.
