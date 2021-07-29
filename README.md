@@ -164,14 +164,15 @@ In this exercise, you have gone through how to make migrations to update your
 database tables to avoid simply un-migrating your database and potentially
 losing precious user data.
 
-Some other things to consider is that if you do make changes to your seeder
-files, it might also be good to consider making new seeders to update the
-previous seeders just so that your seeder files also follow the same idea. Also,
-you seeder files that rely on another set of seeds, like Posts that need a
-`userId` property, should query for the user(s) in question rather than assuming
-that the user's id will be consistent. For the most part the ids should be
-consistent, but in the off chance that you have un-seeded and re-seeded your
-seed data, then the ids for the Users or any other table might have reset.
+Other things to consider are:
+* If you do make changes to your seeder files, it might also be good to consider
+    making new seeders to update the previous seeders just so that your seeder
+    files also follow the same idea.
+* Seeder files that rely on another set of seeds (e.g. Posts that need a
+    `userId` property) should query for the user(s) in question. Do not assume
+    that the user's id will be consistent
+* In the off chance that you have un-seeded and re-seeded your seed data, the
+    ids for the Users or any other table may change.
 
 Feel free to explore the [Sequelize docs] for more examples and descriptions of
 the methods mentioned in this exercise.
