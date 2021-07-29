@@ -80,9 +80,9 @@ module.exports = {
 
 Notice how you can set the column's attributes in the third parameter in the
 `addColumn` method. When adding a new column to a table with pre-existing data
-that has the non-nullable attribute, add a `defaultValue` attribute as well so
-that the migration doesn't error out because of rows in your database that won't
-have data for that new column.
+that has the non-nullable attribute, add a `defaultValue` attribute as well.
+This will prevent the migration from error-ing out due to rows in the database
+not having data for the new column.
 
 You can test this out by removing the `defaultValue` attribute and running this
 migration with `npx dotenv sequelize db:migrate` to see the error message. Since
