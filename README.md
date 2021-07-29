@@ -84,12 +84,11 @@ that has the non-nullable attribute, add a `defaultValue` attribute as well.
 This will prevent the migration from error-ing out due to rows in the database
 not having data for the new column.
 
-You can test this out by removing the `defaultValue` attribute and running this
-migration with `npx dotenv sequelize db:migrate` to see the error message. Since
-it would have failed to migrate since there was pre-existing data in our `Users`
-table from the seeder file, you can make the necessary modification to the this
-migration by adding the `defaultValue` attribute back, and re-running this
-migration.
+To test this out, remove the `defaultValue` attribute and run the migration with
+`npx dotenv sequelize db:migrate`. Notice the error message. Because there is
+pre-existing data in our Users table from the seeder file, the migration fails.
+You can make the necessary modification by re-adding the `defaultValue`
+attribute and re-running the migration.
 
 Check out the [Sequelize documentation] for more information on using migrations.
 
