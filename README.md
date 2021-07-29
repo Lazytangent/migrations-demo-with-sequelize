@@ -150,10 +150,10 @@ module.exports = {
 ```
 
 The transaction prevents one change from happening if at least one other change
-fails, which will make the migration easier to use and re-use since it will
+fails. This will make the migration easier to use and re-use since it will
 consistently only add both columns, remove both columns, or do nothing. The
 `transaction` method returns a Promise, which is what you need to return from
-both our `up` and `down` methods, and it accepts a callback that gets called
+both the `up` and `down` methods, and it accepts a callback that gets called
 with the transaction object and should return a Promise, which is why you return
 the `Promise.all` with our `addColumn` methods called inside. The same thing
 happens in the `down` method, except with `removeColumn` method calls instead.
