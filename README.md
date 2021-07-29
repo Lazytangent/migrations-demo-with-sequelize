@@ -7,15 +7,13 @@ access a database with migrations and models.
 
 ## Why?
 
-When your application has been used by some number of people already and your
-database is storing information that makes your users want to continue to use
-your application, you won't want to just throw away all that data if you need to
-make changes to your database tables. This means that un-migrating to make a
-change on a pre-existing migration, then re-migrating to apply those changes,
-which clears your tables as a side effect, is not ideal. Instead, it is
-preferred to generate a new migration that makes the changes you need to your
-database tables, so that you can just run the new migration(s) without ever
-purging your database tables of the data that have come from your users.
+If you need to make changes to your database tables and you have a large number
+of active users, you should always retain the already collected data you've
+received from those active users. Un-migrating then re-migrating to make changes
+to the database clears your tables as a side-effect. That is not ideal. It is
+preferred that you generate a new migration containing only the needed changes.
+This will prevent you from purging the already collected data from your database
+tables.
 
 ## Phase 0: Getting Started
 
