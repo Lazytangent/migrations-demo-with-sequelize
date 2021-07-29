@@ -109,10 +109,10 @@ npx sequelize migration:generate --name more-user-table-updates
 ```
 
 In the newest migration file, you will edit the `up` and `down` methods to use
-transactions to make sure that both columns get added, or neither will get
-added. This helps create snapshots so that every migration can be consistently
-ran in either direction without causing changes that would make the migration
-not run correctly the next time.
+transactions. This will ensure that either both columns are added or neither is
+added. This helps create snapshots that allow every migration to be run in
+either direction without creating changes that cause failure of subsequent
+migrations.
 
 The contents of the migration file should now look something like this.
 
